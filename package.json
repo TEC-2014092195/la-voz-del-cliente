@@ -1,0 +1,22 @@
+{
+  "name": "la-voz-del-cliente",
+  "version": "1.0.0",
+  "description": "la-voz-del-cliente Page",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "keywords": [
+    "crud"
+  ],
+  "author": "Kevin Hernández Rostrán <kevinah95@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "busboy": "^0.2.13",
+    "express": "^4.14.0",
+    "method-override": "^2.3.6",
+    "morgan": "^1.7.0",
+    "mysql": "^2.11.1"
+  }
+}
