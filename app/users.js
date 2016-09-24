@@ -7,9 +7,9 @@ module.exports = function(pool) {
     'use strict';
     var router = express.Router();
 
-    router.get('/getUsers', function(req, res) {
+    router.post('/login', function(req, res) {
         pool.getConnection(function(err, connection) {
-            connection.query('', function(err, rows) {
+            connection.query('CALL Login(?,?,?,?)', function(err, rows) {
                 if (err) throw err;
                 res.send(rows[0]);
                 connection.release();
