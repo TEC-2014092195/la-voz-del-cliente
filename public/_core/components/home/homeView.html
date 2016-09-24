@@ -6,16 +6,11 @@
         <input type="text" id="inputNombreComercial" class="form-control" placeholder="Nombre Comercial" required autofocus>
         <label for="inputNombreUsuario" class="sr-only">Nombre Usuario</label>
         <input type="text" id="inputNombreUsuario" class="form-control" placeholder="Nombre Usuario" required>
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                País
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#">Action</a></li>
 
-            </ul>
-        </div>
+            <select class="form-control" id="pais" required>
+                <option ng-repeat="pais in paises track by $index">{{pais.Nombre}}</option>
+            </select>
+
         <label for="inputContrasenia" class="sr-only">Contraseña</label>
         <input type="password" id="inputContrasenia" class="form-control" placeholder="Contraseña" required>
 
