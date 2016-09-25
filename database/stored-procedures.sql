@@ -28,20 +28,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertPYME`(
 BEGIN
 START TRANSACTION;
 insert into pyme
-values (pNombreComercio,pEstadoID,pSectorID,pAnnoInicioOperaciones,pNumeroTelefono,pDireccion,pEsActiva,pEsNegocioFamiliar,pLogo,pExtensionLogo,pFechaCreacion,pFechaUltimaActualizacion,pEsFacebookAppInstalado,pUsuarioID,pGeneroPropietarioID,pCedJuridica); 
+values (pNombreComercio,pEstadoID,pSectorID,pAnnoInicioOperaciones,pNumeroTelefono,pDireccion,pEsActiva,pEsNegocioFamiliar,pLogo,pExtensionLogo,pFechaCreacion,pFechaUltimaActualizacion,pEsFacebookAppInstalado,pUsuarioID,pGeneroPropietarioID,pCedJuridica);
 COMMIT;
 
 
 END$$
 DELIMITER ;
 
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUsuario`(IN `NombreUsuario` VARCHAR(50), IN `NombreCompleto` VARCHAR(100), IN `Clave` VARCHAR(50), IN `EmailContacto` VARCHAR(50))
-BEGIN
-INSERT INTO usuario(usuario.Usuario,usuario.NombreCompleto,usuario.Clave, usuario.EmailContacto) values
-(NombreUsuario,NombreCompleto,Clave,EmailContacto);
-END$$
-DELIMITER ;
+
 
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertRespuestas`(
@@ -65,3 +59,23 @@ values(pRespuesta01,pRespuesta02,pRespuesta03,pRespuesta04,pRespuesta05,pFechaRe
 COMMIT;
 END$$
 DELIMITER ;
+
+
+-- Volcando estructura para procedimiento programathon2016.getPaises
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getPaises`()
+BEGIN
+	Select pais.Nombre from pais;
+END//
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUsuario`(IN `NombreUsuario` VARCHAR(50), IN `NombreCompleto` VARCHAR(100), IN `Clave` VARCHAR(50), IN `EmailContacto` VARCHAR(50))
+BEGIN
+INSERT INTO usuario(usuario.Usuario,usuario.NombreCompleto,usuario.Clave, usuario.EmailContacto) values
+(NombreUsuario,NombreCompleto,Clave,EmailContacto);
+END$$
+DELIMITER ;
+
+
