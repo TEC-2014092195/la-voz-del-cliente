@@ -34,6 +34,16 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         controller: 'regSocialNetworksCtrl'
     });
 
+    $routeProvider.when('/editPYME', {
+        templateUrl: '_core/components/editPYME/editPYMEView.html',
+        controller: 'editPYMECtrl'
+    });
+
+    $routeProvider.when('/encuesta', {
+        templateUrl: '_core/components/encuesta/encuestaView.html',
+        controller: 'encuestaCtrl'
+    });
+
 
     $routeProvider.otherwise({
         redirectTo: '/home'

@@ -61,6 +61,7 @@ app.controller('dashboardCtrl', function ($scope, $http, $timeout, $location) {
     
     function getPagesFromUser() {
         FB.api('/me/accounts', function(response){
+            console.log(response);
             document.getElementById("pagAdministradas").innerText =
                 'Las páginas administradas son: \n' + response.data[0].name;
             pagePostId = response.data[0].id;

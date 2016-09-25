@@ -1,0 +1,67 @@
+<!--Table and divs that hold the pie charts-->
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <h1>Ingreso de Datos</h1>
+        <form name="userForm" ng-submit="submit(userForm.$valid)">
+            <div class="form-group">
+                <label for="nombreComercial">Nombre Comercial: <a>{{userinfo.nombrePyme}}</a> </label>
+                <input type="text" id="nombreComercial" class="form-control" maxlength="100"
+                       placeholder="Max 100 caracteres" ng-model="resultado.nombreComercial" ng-readonly="true" required>
+            </div>
+            <div class="form-group">
+                <label for="pais">País:<a>{{userinfo.paisNombre}}</a> </label>
+                <select name="selValue" class="form-control" ng-model="resultado.pais" ng-change="selectPais(resultado.pais);" required>
+                    <option ng-repeat="pais in paises track by $index" requiered>{{pais.Nombre}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="estado">Estado: <a>{{userinfo.estadoNombre}}</a></label>
+                <select class="form-control" ng-model="resultado.estado" ng-change="selectEstado(resultado.estado);" required>
+                    <option ng-repeat="estado in estados track by $index" required>{{estado.Nombre}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="sector">Sector: <a>{{sectores[userinfo.sectorID].Nombre}}</a></label>
+                <select class="form-control" ng-model="resultado.sector" ng-change="selectSector(resultado.sector);" required>
+                    <option ng-repeat="sector in sectores track by $index" required>{{sector.Nombre}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="identificacion">Identificación/Cédula Jurídica: <a>{{userinfo.CedJuridica}}</a></label>
+                <input type="text" class="form-control" maxlength="50" placeholder="Max 50 caracteres"
+                       ng-model="resultado.identificacion" required>
+            </div>
+            <div class="form-group">
+                <label for="inicioOperaciones">Año de Inicio de Operaciones:<a>{{userinfo.inicioOperaciones}}</a></label>
+                <input type="number" min="00" max="99" placeholder="Max 2 dígitos" class="form-control"
+                       ng-model="resultado.inicioOperaciones" required>
+            </div>
+            <div class="form-group">
+                <label for="generoPropietario">Género del Propietario:<a>{{userinfo.genNombre}}</a></label>
+                <select class="form-control" ng-model="resultado.generoPropietario" ng-change="selectGenero(resultado.generoPropietario);" required>
+                    <option ng-repeat="genero in generos">{{genero.Nombre}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:<a>{{userinfo.telefono}}</a> </label>
+                <input type="text" maxlength="50" placeholder="Max 50 dígitos" class="form-control"
+                       ng-model="resultado.telefono" required>
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección: <a>{{userinfo.direccion}}</a></label>
+                <input type="text" class="form-control" placeholder="Max 200 caracteres" ng-model="resultado.direccion"
+                       required>
+            </div>
+            <div class="form-group">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="true" ng-model="resultado.activa">¿Es una PYME activa?</label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="true" ng-model="resultado.familiar">¿Es una PYME familiar?</label>
+            </div>
+
+            <button class="btn btn-success">Submit</button>
+        </form>
+    </div>
+    <div class="col-sm-3"></div>
+</div>

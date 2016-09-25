@@ -3,63 +3,89 @@
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
         <h1>Ingreso de Datos</h1>
-        <form>
+        <form name="userForm" ng-submit="submit(userForm.$valid)">
             <div class="form-group">
                 <label for="nombreComercial">Nombre Comercial:</label>
-                <input type="text" id="nombreComercial" class="form-control" maxlength="100" placeholder="Max 100 caracteres" ng-model="resultado.nombreComercial" required>
+                <input type="text" id="nombreComercial" class="form-control" maxlength="100"
+                       placeholder="Max 100 caracteres" ng-model="resultado.nombreComercial" required>
             </div>
             <div class="form-group">
                 <label for="pais">País:</label>
-                <select class="form-control" ng-model="resultado.pais" required>
-                    <option ng-repeat="pais in paises" requiered>{{pais}}</option>
+                <select class="form-control" ng-model="resultado.pais" ng-change="selectPais(resultado.pais);" required>
+                    <option ng-repeat="pais in paises track by $index" requiered>{{pais.Nombre}}</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="estado">Estado:</label>
-                <select class="form-control" ng-model="resultado.estado" required>
-                    <option ng-repeat="estado in estados" required>{{estado}}</option>
+                <select class="form-control" ng-model="resultado.estado" ng-change="selectEstado(resultado.estado);" required>
+                    <option ng-repeat="estado in estados track by $index" required>{{estado.Nombre}}</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="sector">Sector:</label>
-                <select class="form-control" ng-model="resultado.sector" required>
-                    <option ng-repeat="sector in sectores" required>{{sector}}</option>
+                <select class="form-control" ng-model="resultado.sector" ng-change="selectSector(resultado.sector);" required>
+                    <option ng-repeat="sector in sectores track by $index" required>{{sector.Nombre}}</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="identificacion">Identificación/Cédula Jurídica:</label>
-                <input type="text" class="form-control" maxlength="50" placeholder="Max 50 caracteres" ng-model="resultado.identificacion" required>
+                <input type="text" class="form-control" maxlength="50" placeholder="Max 50 caracteres"
+                       ng-model="resultado.identificacion" required>
             </div>
             <div class="form-group">
                 <label for="inicioOperaciones">Año de Inicio de Operaciones:</label>
-                <input type="number" min="1000" max="9999" placeholder="Max 4 dígitos"class="form-control" ng-model="resultado.inicioOperaciones" required>
+                <input type="number" min="00" max="99" maxlength="2" placeholder="Max 2 dígitos" class="form-control"
+                       ng-model="resultado.inicioOperaciones" required>
             </div>
             <div class="form-group">
                 <label for="generoPropietario">Género del Propietario:</label>
-                <select class="form-control" ng-model="resultado.generoPropietario" required>
-                    <option ng-repeat="genero in generos">{{genero}}</option>
+                <select class="form-control" ng-model="resultado.generoPropietario" ng-change="selectGenero(resultado.generoPropietario);" required>
+                    <option ng-repeat="genero in generos">{{genero.Nombre}}</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="telefono">Teléfono</label>
-                <input type="text" maxlength="50" placeholder="Max 50 dígitos" class="form-control" ng-model="resultado.telefono" required>
+                <input type="text" maxlength="50" placeholder="Max 50 dígitos" class="form-control"
+                       ng-model="resultado.telefono" required>
             </div>
             <div class="form-group">
                 <label for="direccion">Dirección:</label>
-                <input type="text" class="form-control" placeholder="Max 200 caracteres" ng-model="resultado.direccion" required>
+                <input type="text" class="form-control" maxlength="200" placeholder="Max 200 caracteres" ng-model="resultado.direccion"
+                       required>
             </div>
             <div class="form-group">
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="true" ng-model="resultado.activa">¿Es una PYME activa?</label>
+
                 <label class="checkbox-inline">
                     <input type="checkbox" value="true" ng-model="resultado.familiar">¿Es una PYME familiar?</label>
             </div>
             <div class="form-group">
-                <label class="label">Foto del Producto</label>
-                <input class="file" type="file" accept="image/x-png, image/gif" onchange="previewFile()" id="foto">
-                <br>
-                <div class="img-thumbnail">
-                    <img src="" class="img-responsive" style='max-width:30%' alt="Vista previa...">
+                <div class="imageupload panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title pull-left">Upload Image</h3>
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-default active">File</button>
+                            <!--<button type="button" class="btn btn-default">URL</button>-->
+                        </div>
+                    </div>
+                    <div class="file-tab panel-body">
+                        <label class="btn btn-default btn-file">
+                            <span>Browse</span>
+                            <!-- The file is stored here. -->
+                            <input type="file" name="image-file">
+                        </label>
+                        <button type="button" class="btn btn-default">Remove</button>
+                    </div>
+                    <div class="url-tab panel-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Image URL">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default">Submit</button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default">Remove</button>
+                        <!-- The URL is stored here. -->
+                        <input type="hidden" name="image-url">
+                    </div>
                 </div>
             </div>
             <button ng-click="submit()" class="btn btn-success">Submit</button>

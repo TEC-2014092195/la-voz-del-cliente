@@ -1,7 +1,7 @@
-app.controller('registerCtrl', function($scope,$location,AuthService){
+app.controller('editPYMECtrl', function ($scope, $timeout, $location, AuthService) {
 
     $scope.resultado = {
-        activa:true,
+        activa:false,
         familiar:false,
         direccion:"",
         estado:"",
@@ -16,15 +16,29 @@ app.controller('registerCtrl', function($scope,$location,AuthService){
     };
 
     var pais_elegido,
-     estado_elegido,
-     sector_elegido,
-     genero_elegido = null;
+        estado_elegido,
+        sector_elegido,
+        genero_elegido = null;
     $scope.init = function () {
+        $scope.userinfo = JSON.parse(localStorage.userinfo)[0];
+        console.log($scope.userinfo);
+        $scope.resultado.nombreComercial = $scope.userinfo.nombrePyme;
+        $scope.resultado.activa = $scope.userinfo.activa.data[0] ? true : false;
+        $scope.resultado.familiar = $scope.userinfo.familiar.data[0] ? true : false;
+        console.log($scope.userinfo.activa.data[0]);
+
+
+
+        // Set the "selected" value of the <select>.
+
+        //$scope.resultado.pais = $scope.userinfo.paisNombre;
         var promise = AuthService.getPaises();
         promise.then(
             function (callback) {
                 $scope.paises = callback;
-                //$scope.model.Pais = $scope.paises[0];
+
+
+
             },
             function (errorCallback) {
                 console.log('Error: ', errorCallback);
@@ -50,12 +64,15 @@ app.controller('registerCtrl', function($scope,$location,AuthService){
     };
     $scope.init();
 
+
+
     $scope.selectPais = function(criteria) {
         if ($scope.paises.length != 0) {
             var index = $scope.paises.map(function(d) {
                 return d['Nombre'];
             }).indexOf(criteria);
             pais_elegido = $scope.paises[index];
+
             var promise2 = AuthService.getEstados(pais_elegido);
             promise2.then(
                 function(callback) {
@@ -119,16 +136,17 @@ app.controller('registerCtrl', function($scope,$location,AuthService){
             $scope.resultado.estado = estado_elegido;
             $scope.resultado.sector = sector_elegido;
             $scope.resultado.generoPropietario = genero_elegido;
-            $scope.resultado.usuario = JSON.parse(localStorage.user);
-
+            $scope.resultado.usuario = $scope.userinfo.usuarioID;
+            $scope.resultado.pymeID = $scope.userinfo.pymeID;
             console.log($scope.resultado.usuario);
 
-            var promise = AuthService.insertPYME($scope.resultado);
+            var promise = AuthService.updatePYME($scope.resultado);
             promise.then(
                 function(callback) {
                     console.log(callback);
-                    localStorage.pyme = JSON.stringify(callback);
-                    $location.path('regSocialNetworks').replace();
+                    alert("Updtae realizado...");
+                    //localStorage.pyme = JSON.stringify(callback);
+                    //$location.path('regSocialNetworks').replace();
                 },
                 function(errorCallback) {
                     console.log('Error: ', errorCallback);
@@ -147,21 +165,3 @@ app.controller('registerCtrl', function($scope,$location,AuthService){
 });
 
 
-
-function previewFile() {
-    var preview = document.querySelector('img');
-    var file = document.querySelector('input[type=file]').files[0];
-    var reader = new FileReader();
-
-    reader.onloadend = function() {
-        preview.src = reader.result;
-        imgsrc = reader.result;
-        blob = reader.result;
-    }
-
-    if (file) {
-        reader.readAsDataURL(file);
-    } else {
-        preview.src = "";
-    }
-};

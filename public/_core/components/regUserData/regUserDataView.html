@@ -2,7 +2,7 @@
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
         <h1>Registro de Usuario</h1>
-        <form>
+        <form name="userForm" ng-submit="submit(userForm.$valid)">
             <div class="form-group">
                 <label for="nombrecompleto">Nombre Completo:</label>
                 <input type="text" id="nombrecompleto" class="form-control" maxlength="50" placeholder="Max 50 caracteres" ng-model="resultado.nombrecompleto" required>
@@ -11,6 +11,16 @@
                 <label for="nombreusuario">Nombre Usuario:</label>
                 <input type="text" id="nombreusuario" class="form-control" maxlength="50" placeholder="Max 50 caracteres" ng-model="resultado.nombreusuario" required>
             </div>
+
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" class="form-control" maxlength="50" placeholder="nombre@ejemplo.com" ng-model="resultado.correo" required>
+            </div>
+            <div class="form-group">
+                <label for="recorreo">Re-ingresar correo:</label>
+                <input type="email" id="recorreo" class="form-control" maxlength="50" placeholder="nombre@ejemplo.com" ng-model="resultado.recorreo" required>
+            </div>
+
             <div class="form-group">
                 <label for="clave">Contraseña:</label>
                 <input type="password" id="clave" class="form-control" maxlength="10" input pattern=".{8,10}" placeholder="De 8 a 10 caracteres" ng-model="resultado.clave" required>
