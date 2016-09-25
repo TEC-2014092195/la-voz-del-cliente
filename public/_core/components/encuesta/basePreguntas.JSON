@@ -1,0 +1,17 @@
+[{
+	"preguntas": [
+		"¿Calidad del producto o servicio?", 
+		"¿Tiempo de espera o atención?", 
+		"¿Imagen en las instalaciones?", 
+		"¿Disponibilida del producto o servicio solicitado?", 
+		"¿Atención del personal?"
+	],
+	"edades": [{"id":1,"Nombre":"12-17"},
+		{"id":2,"Nombre":"18-33"},
+		{"id":3,"Nombre":"34-45"},
+		{"id":4,"Nombre":"46-55"},
+		{"id":5,"Nombre":"56-64"},
+		{"id":6,"Nombre":"65-73"},
+		{"id":7,"Nombre":"74+"}
+	]
+}]

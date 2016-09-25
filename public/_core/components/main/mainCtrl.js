@@ -1,7 +1,16 @@
-app.controller('dashboardCtrl', function ($scope, $http, $timeout, $location) {
+app.controller('mainCtrl', function ($scope, $http, $timeout, $location, AuthService) {
 
     var pagePostId = '';
     var pageAccessToken = '';
+
+    $scope.init = function(){
+        $scope.usuario = JSON.parse(localStorage.userinfo)[0];
+        console.log($scope.usuario);
+        $scope.usuario.facebook = $scope.usuario.facebookApp.data[0];
+        $scope.faceVerde = false;
+        $scope.faceNaranja = true;
+    }
+    $scope.init();
 
     window.fbAsyncInit = function() {
         FB.init({
@@ -28,6 +37,19 @@ app.controller('dashboardCtrl', function ($scope, $http, $timeout, $location) {
         console.log(response);
         if (response.status === 'connected') {
             getUserName();
+            /*var promise = AuthService.updateFacebook($scope.usuario);
+            promise.then(
+                function(callback) {
+                    console.log(callback);
+
+                },
+                function(errorCallback) {
+                    console.log('Error: ', errorCallback);
+                });*/
+            $scope.faceVerde = true;
+            $scope.faceNaranja = false;
+            $scope.$apply();
+            console.log("Cambio---------");
             getPagesFromUser();
         } else if (response.status === 'not_authorized') {
             document.getElementById('status').innerHTML = 'Please log ' +
@@ -71,10 +93,11 @@ app.controller('dashboardCtrl', function ($scope, $http, $timeout, $location) {
     }
 
     $scope.postOnWall = function() {
+
         FB.api('/' + pagePostId + '/feed', 'post',
             {
                 access_token: pageAccessToken,
-                message     : "ENCUESTA IMPORTANTE: Por favor, a todos nuestros seguidores, les pedimos llenar esta encuesta. Gracias. \n Siga el siguiente link: http://localhost/registro/",
+                message     : ".......A todos nuestros seguidores, les pedimos llenar esta encuesta. Gracias. \n Siga el siguiente link: http://localhost/registro/?varID="+$scope.usuario.pymeID,
                 //link        : 'http://localhost/registro/',
                 to: pagePostId,
                 from: pagePostId
@@ -82,9 +105,23 @@ app.controller('dashboardCtrl', function ($scope, $http, $timeout, $location) {
             function(response) {
                 if (response && !response.error) {
                     console.log("PUBLICADO");
+                    alert("La publicación se hizo correctamente.");
+                    var promise = AuthService.updateFacebook($scope.usuario);
+                    promise.then(
+                        function(callback) {
+                            console.log(callback);
+                            $scope.faceVerde = false;
+                            $scope.usuario.facebookApp.data[0] = !$scope.usuario.facebookApp.data[0];
+                            localStorage.userinfo = JSON.stringify([$scope.usuario]);
+                        },
+                        function(errorCallback) {
+                            console.log('Error: ', errorCallback);
+                        });
                     console.log(response);
+
                 } else {
                     console.log("ERROR AL PUBLICAR");
+                    alert("Ocurrio un error al publicar. Intente de nuevo.");
                     console.log(response);
                 }
             });

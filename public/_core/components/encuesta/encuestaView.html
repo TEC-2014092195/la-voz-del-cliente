@@ -1,0 +1,48 @@
+<script src="https://connect.facebook.net/en_US/all.js"></script>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Ingresar en Facebook</h4>
+            </div>
+            <div class="modal-body">
+                <p>Debe ingresar con el usuario de Facebook para poder hacer la encuesta</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="openLoginDialog()">Ingresar en Facebook</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <h1 align="center">Encuesta de la PYME</h1>
+        <br>
+        <form name="userForm" ng-submit="submit(userForm.$valid)">
+            <div ng-repeat="pregunta in preguntas" class="radiobutton">
+                <h3 for="Preguntas">{{pregunta}}</h3>
+                <br>
+                <div class="form-group">
+                    <select class="form-control" ng-model="resultList.questionsResult[$index]" required>
+
+                        <option ng-repeat="opcion in opciones" required>{{opcion.Nombre}}</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="rangoEdad">Rango de edad</label>
+                <select class="form-control" id="rangoEdad" ng-model="resultList.ageResult" required>
+                    <option></option>
+                    <option ng-repeat="edad in rangoEdades" required>{{edad.Nombre}}</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Enviar Encuesta</button>
+        </form>
+        <br>
+    </div>
+    <div class="col-sm-3"></div>
+</div>

@@ -46,7 +46,7 @@ app.controller('loginCtrl', function ($scope, $timeout, $location, AuthService) 
                         alert("No registrado");
                     }else{
                         localStorage.userinfo = JSON.stringify(callback);
-                        $location.path('editPYME').replace();
+                        $location.path('main').replace();
                     }
 
 

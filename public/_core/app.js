@@ -13,10 +13,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         css: '_core/components/login/login.css'
     });
 
-    $routeProvider.when('/dashboard', {
-        templateUrl: '_core/components/dashboard/dashboardView.html',
-        controller: 'dashboardCtrl',
-        css: '_core/components/dashboard/dashboard.css'
+    $routeProvider.when('/main', {
+        templateUrl: '_core/components/main/mainView.html',
+        controller: 'mainCtrl',
+        css: '_core/components/main/main.css'
     });
 
     $routeProvider.when('/register', {
@@ -41,7 +41,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
     $routeProvider.when('/encuesta', {
         templateUrl: '_core/components/encuesta/encuestaView.html',
-        controller: 'encuestaCtrl'
+        controller: 'encuestaCtrl',
+        css: '_core/components/encuesta/encuesta.css'
     });
 
 

@@ -1,0 +1,59 @@
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron hero-spacer">
+        <img ng-src="{{usuario.Logo}}" width="200" height="200">
+        <h1>Panel de Métricas - {{usuario.nombrePyme}}</h1>
+        <p>{{usuario.nombreUsuario}}</p>
+        <p>Fecha Inicial: {{usuario.fechaInicio}}
+            <br>Fecha Final: {{usuario.fechaFinal}}</p>
+        <div>
+            <button type="button" class="btn btn-success"><a href="editPYME">Editar</a></button>
+
+        </div>
+
+
+
+        </p>
+    </header>
+
+    <hr>
+
+    <!-- Title -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 align="center">¡Utilizar la aplicación de Facebook!</h3>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Page Features -->
+    <div class="row text-center">
+
+        <button type="button" ng-click="openLoginDialog()" ng-show="!usuario.facebookApp.data[0] && faceNaranja" class="btn btn-primary btn-lg">¡Conectarse con la aplicación de Facebook!</button>
+
+        <h3 id="resultadoLogin"></h3>
+        <h3 id="pagAdministradas"></h3>
+
+        <button type="button" ng-click="postOnWall()" ng-show="faceVerde" class="btn btn-success btn-md">Publicar la encuesta en el muro de la página</button>
+    </div>
+    <!-- /.row -->
+    <hr>
+
+    <div class="row text-center">
+        <button type="button" class="btn btn-success btn-md">Consultar</button>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Programathon 2016</p>
+            </div>
+        </div>
+    </footer>
+
+</div>

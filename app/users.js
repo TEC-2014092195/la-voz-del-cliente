@@ -122,6 +122,44 @@ module.exports = function(pool) {
         });
     });
 
+    router.post('/updateFacebook', function(req, res) {
+        var d = req.body;
+        //console.log(d);
+        var values = [d.pymeID];
+        console.log(values);
+        pool.getConnection(function(err, connection) {
+            connection.query('CALL updateFacebook(?)',values, function(err, rows) {
+                if (err) throw err;
+                res.send(rows[0]);
+                connection.release();
+            });
+        });
+    });
+
+    router.post('/insertRespuestas', function(req, res) {
+        var d = req.body;
+        console.log(d);
+
+        if(d.genero == "male"){
+            d.genero = "M";
+        }else if(d.genero == "female"){
+            d.genero = "F";
+        }else{
+            d.genero = "N";
+        }
+
+        var values = [parseInt(d.respuestas[0]),parseInt(d.respuestas[1]),parseInt(d.respuestas[2]),parseInt(d.respuestas[3]),parseInt(d.respuestas[4]),d.genero,null,null,parseInt(d.edad),d.usuario.pymeID];
+        console.log(values);
+        pool.getConnection(function(err, connection) {
+            connection.query('CALL insertRespuestas(?,?,?,?,?,?,?,?,?,?)',values, function(err, rows) {
+                if (err) throw err;
+                res.send(rows[0]);
+                connection.release();
+            });
+        });
+    });
+
+
     router.post('/login', function(req, res) {
         pool.getConnection(function(err, connection) {
             connection.query('CALL Login(?,?,?,?)', function(err, rows) {

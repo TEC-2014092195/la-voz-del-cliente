@@ -101,7 +101,30 @@ app.factory('AuthService', function($q, $log, $http) {
                 $log.error(msg, code);
             });
             return deferred.promise;
+        },updateFacebook: function(model) {
+            var deferred = $q.defer();
+
+            $http.post('/api/users/updateFacebook', model)
+                .success(function(data) {
+                    deferred.resolve(data);
+                }).error(function(msg, code) {
+                deferred.reject(msg);
+                $log.error(msg, code);
+            });
+            return deferred.promise;
+        },insertRespuestas: function(model) {
+            var deferred = $q.defer();
+
+            $http.post('/api/users/insertRespuestas', model)
+                .success(function(data) {
+                    deferred.resolve(data);
+                }).error(function(msg, code) {
+                deferred.reject(msg);
+                $log.error(msg, code);
+            });
+            return deferred.promise;
         }
+
 
     };
 });
