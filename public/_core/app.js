@@ -45,6 +45,12 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         css: '_core/components/encuesta/encuesta.css'
     });
 
+    $routeProvider.when('/dashboard',{
+        templateUrl: '_core/components/dashboard/dashboardView.html',
+        controller: 'dashboardCtrl',
+        css: '_core/components/dashboard/dashboardStyle.css'
+    });
+
 
     $routeProvider.otherwise({
         redirectTo: '/home'

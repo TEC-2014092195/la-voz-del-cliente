@@ -1,0 +1,89 @@
+<div ng-controller="dashboardCtrl" ng-init="init()">
+    <!-- header -->
+    <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Inicio</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Información de mi Pyme</button>
+                    <!-- Modal -->
+                    <button type="button" class="btn btn-danger btn-sm">Cerrar Sesión</button>
+                </ul>
+            </div>
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /Header -->
+    <!-- Trigger the modal with a button -->
+    <!-- Main -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <!-- Left column -->
+                <a href="#"><strong></i> Enlaces</strong></a>
+                <hr>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="nav-header"></li>
+                    <li><a href="#">URL 1</a></li>
+                    <li><a href="#">URL 2</a></li>
+                    <li><a href="#">URL 3</a></li>
+                    <li><a href="#">URL 4</a></li>
+                    <li><a href="#">URL 5</a></li>
+                    <li><a href="#">URL 6</a></li>
+                </ul>
+            </div>
+            <!-- /col-3 -->
+            <div class="col-sm-9">
+                <!-- column 2 -->
+                <a href="#"><strong></i> Estadísticas de su Pyme</strong></a>
+                <hr>
+                <div class="row">
+                    <!-- center left-->
+                    <div class="col-md-6">
+                        <tr>
+                            <td>
+                                <div id="piechart1_div" style="border: 1px solid #ccc"></div>
+                            </td>
+                            <br>
+                            <td>
+                                <div id="piechart2_div" style="border: 1px solid #ccc"></div>
+                            </td>
+                            <br>
+                            <td>
+                                <div id="piechart3_div" style="border: 1px solid #ccc"></div>
+                            </td>
+                        </tr>
+                    </div>
+                    <!--/col-->
+                    <div class="col-md-6">
+                        <tr>
+                            <td>
+                                <div id="piechart4_div" style="border: 1px solid #ccc"></div>
+                            </td>
+                            <br>
+                            <td>
+                                <div id="piechart5_div" style="border: 1px solid #ccc"></div>
+                            </td>
+                            <br>
+                            <td>
+                                <div id="piechart6_div" style="border: 1px solid #ccc"></div>
+                            </td>
+                            <br>
+                            <td>
+                                <div id="piechart7_div" style="border: 1px solid #ccc"></div>
+                            </td>
+                        </tr>
+                    </div>
+                    <!--/col-span-6-->
+                </div>
+                <!--/row-->
+                <hr>
+            </div>
+            <!--/col-span-9-->
+        </div>
+    <!-- /Main -->
+
+</div>
+
