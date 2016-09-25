@@ -1,0 +1,32 @@
+<!--Table and divs that hold the pie charts-->
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <h1>Redes Sociales</h1>
+        <form>
+            <div class="form-group">
+                <label for="facebookDir">Dirección de Facebook:</label>
+                <input type="text" id="facebookDir" class="form-control" maxlength="300" placeholder="Max 300 caracteres" ng-model="resultado.facebookDir" required>
+            </div>
+            <div class="form-group">
+                <label for="twitterDir">Dirección de Twitter:</label>
+                <input type="text" id="twitterDir" class="form-control" maxlength="300" placeholder="Max 300 caracteres" ng-model="resultado.twitterDir">
+            </div>
+            <div class="form-group">
+                <label for="youtubeDir">Dirección de YouTube:</label>
+                <input type="text" id="youtubeDir" class="form-control" maxlength="300" placeholder="Max 300 caracteres" ng-model="resultado.youtubeDir">
+            </div>
+            <div class="form-group">
+                <label for="siteDir">Página Web:</label>
+                <input type="text" id="siteDir" class="form-control" maxlength="300" placeholder="Max 300 caracteres" ng-model="resultado.siteDir">
+            </div>
+            <div class="form-group">
+                <label for="mailDir">Correo de Contacto:</label>
+                <input type="email" id="mailDir" class="form-control" maxlength="50" placeholder="Max 50 caracteres" ng-model="resultado.mailDir">
+            </div>
+
+            <button ng-click="submit()" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+    <div class="col-sm-3"></div>
+</div>

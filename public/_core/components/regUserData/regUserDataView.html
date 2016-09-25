@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <h1>Registro de Usuario</h1>
+        <form>
+            <div class="form-group">
+                <label for="nombrecompleto">Nombre Completo:</label>
+                <input type="text" id="nombrecompleto" class="form-control" maxlength="50" placeholder="Max 50 caracteres" ng-model="resultado.nombrecompleto" required>
+            </div>
+            <div class="form-group">
+                <label for="nombreusuario">Nombre Usuario:</label>
+                <input type="text" id="nombreusuario" class="form-control" maxlength="50" placeholder="Max 50 caracteres" ng-model="resultado.nombreusuario" required>
+            </div>
+            <div class="form-group">
+                <label for="clave">Contraseña:</label>
+                <input type="password" id="clave" class="form-control" maxlength="10" input pattern=".{8,10}" placeholder="De 8 a 10 caracteres" ng-model="resultado.clave" required>
+            </div>
+            <div class="form-group">
+                <label for="reclave">Re-ingresar contraseña:</label>
+                <input type="password" id="reclave" class="form-control" maxlength="10" input pattern=".{8,10}" placeholder="De 8 a 10 caracteres" ng-model="resultado.reclave" required>
+            </div>
+
+            <button ng-click="submit()" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+    <div class="col-sm-3"></div>
+</div>
