@@ -18,6 +18,16 @@ module.exports = function(pool) {
         });
     });
 
+    router.post('/getEstados', function(req, res) {
+        pool.getConnection(function(err, connection) {
+            connection.query('CALL getEstados(?)', function(err, rows) {
+                if (err) throw err;
+                res.send(rows[0]);
+                connection.release();
+            });
+        });
+    });
+
 
     router.post('/login', function(req, res) {
         pool.getConnection(function(err, connection) {

@@ -19,6 +19,22 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         css: '_core/components/dashboard/dashboard.css'
     });
 
+    $routeProvider.when('/register', {
+        templateUrl: '_core/components/register/registerView.html',
+        controller: 'registerCtrl'
+    });
+
+    $routeProvider.when('/regUserData', {
+        templateUrl: '_core/components/regUserData/regUserDataView.html',
+        controller: 'regUserDataCtrl'
+    });
+
+    $routeProvider.when('/regSocialNetworks', {
+        templateUrl: '_core/components/regSocialNetworks/regSocialNetworksView.html',
+        controller: 'regSocialNetworksCtrl'
+    });
+
+
     $routeProvider.otherwise({
         redirectTo: '/home'
     });
