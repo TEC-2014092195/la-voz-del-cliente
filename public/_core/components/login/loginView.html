@@ -1,0 +1,40 @@
+<div class="container">
+
+    <form class="form-signin" data-toggle="validator" role="form" ng-submit="submit()">
+        <h2 class="form-signin-heading">Inicio de sesión</h2>
+        <label for="inputNombreComercial" class="sr-only">Nombre Comercial</label>
+        <input type="text" id="inputNombreComercial" class="form-control" maxlength="100" placeholder="Nombre Comercial" required autofocus ng-model="model.NombreComercial">
+        <label for="inputNombreUsuario" class="sr-only">Nombre Usuario</label>
+        <input type="text" id="inputNombreUsuario" class="form-control" maxlength="50" placeholder="Nombre Usuario" required ng-model="model.NombreUsuario">
+
+        <select class="form-control" id="pais"  ng-model="model.Pais" required>
+            <option ng-repeat="pais in paises track by $index">{{pais.Nombre}}</option>
+        </select>
+
+        <div class="form-group">
+            <label for="inputContrasenia" class="control-label">Contraseña</label>
+
+                <div class="form-group">
+                    <input type="password" input pattern=".{8,10}" maxlength="10" class="form-control" id="inputContrasenia" placeholder="Contraseña" required ng-model="model.Password">
+                    <div class="help-block">Mínimo 8 caracteres</div>
+                </div>
+                <div class="form-group">
+                    <input type="password" input pattern=".{8,10}" maxlength="10" class="form-control" id="inputContraseniaConfirmar" data-match="#inputContrasenia" data-match-error="No hay coincidencia" placeholder="Confirmar" required ng-model="model.PasswordConfirm">
+                    <div class="help-block with-errors"></div>
+                </div>
+
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Aceptar</button>
+        <button class="btn btn-lg btn-danger btn-block">Cancelar</button>
+        <ul class="nav nav-pills">
+            <li role="presentation"><a href="#">Olvidé la Contraseña</a></li>
+
+        </ul>
+        <ul class="nav nav-pills">
+            <li role="presentation"><a href="#">Registrarse</a></li>
+        </ul>
+
+    </form>
+
+</div> <!-- /container -->
