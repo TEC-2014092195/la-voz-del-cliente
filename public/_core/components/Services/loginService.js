@@ -12,6 +12,18 @@ app.factory('AuthService', function($q, $log, $http) {
                 $log.error(msg, code);
             });
             return deferred.promise;
+        },
+        getEstados: function() {
+            var deferred = $q.defer();
+
+            $http.get('/api/users/getEstados')
+                .success(function(data) {
+                    deferred.resolve(data);
+                }).error(function(msg, code) {
+                deferred.reject(msg);
+                $log.error(msg, code);
+            });
+            return deferred.promise;
         }
     };
 });

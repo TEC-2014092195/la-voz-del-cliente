@@ -18,7 +18,7 @@ app.controller('loginCtrl', function ($scope, $timeout, $location, AuthService) 
             function (errorCallback) {
                 console.log('Error: ', errorCallback);
             })
-    }
+    };
     $scope.init();
 
 
